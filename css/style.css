@@ -45,8 +45,8 @@ a:hover {
   border-radius: 80px;
   padding: 100px;
   margin: 0 auto;
-  width: 600px;
-  height: 500px;
+  max-width: 600px;
+  max-height: 500px;
   background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
   text-align: center;
