@@ -11,11 +11,17 @@ let form = document.querySelector("form");
 form.addEventListener("submit", cityInput);
 
 function getWeather(output) {
+  console.log(output.data);
   let currentTemp = Math.round(output.data.main.temp);
   let temperature = document.querySelector(".temp");
-  temperature.innerHTML = `${currentTemp}`;
+  temperature.innerHTML = `${currentTemp}°`;
+  let decsription = document.querySelector(".descrip");
+  decsription.innerHTML = output.data.weather[0].description;
+  let humid = document.querySelector(".humidity");
+  humid.innerHTML = output.data.main.humidity;
+  let windSpeed = document.querySelector(".wind");
+  windSpeed.innerHTML = Math.round(output.data.wind.speed);
 }
-
 
 let current = new Date();
 let minute = current.getMinutes();
