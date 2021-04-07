@@ -15,8 +15,7 @@ li {
   text-align: center;
   list-style: none;
 }
-
-input {
+a input {
   display: block;
   margin: 0 auto;
 }
@@ -38,7 +37,7 @@ a:hover {
 }
 
 .weather-app {
-  border-radius: 80px;
+  border-radius: 50px;
   padding: 100px;
   margin: 0 auto;
   max-width: 600px;
@@ -48,5 +47,5 @@ a:hover {
   text-align: center;
 }
 .temp {
-  font-size: 30px;
+  font-size: 34px;
 }
