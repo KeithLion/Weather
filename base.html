@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Weather</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      
+          
+          <div class="container-fluid">
+    <span class="search-bar">
+      <form class="d-flex" id="input-value">
+        <input class="form-control me-2" id="city-input" placeholder="City" type="search" aria-label="Search">
+        <button id="button" class="btn btn-outline-success" type="submit" value="search">Search</button>
+        
+      </form>
+    </span>
+  </div>
+
+<div class="row">
+<div class="col-6">
+<h3>
+  San Diego
+</h3>
+  <p id="date">
+    <br />
+    <span id="currentDay">
+    Date
+  </span>
+    <br>
+    <Span id="time">
+      Time
+    </Span>
+  </p>
+</div>
+<div class="col-6">
+
+  <div class="temp-panel">
+    <li>⛅
+      <span class="temp">
+        60
+      </span>
+      <a class="degreef">
+        °F
+      </a>
+      |
+      <a class="degreec">
+      ℃
+      </a>
+    </li>
+    <li>precipitation: 1%</li>
+    <li>humidity: 66%</li>
+    <li>wind: 44mph</li>
+  </div>
+</div>
+</div>
+<div class="days">
+
+  <div class="row">
+    <p>
+      
+      <div class="col-2">
+        sun
+        <br>
+        🌞
+      <br>
+      72℉/
+      <br>
+      55℃
+    </div>
+    <br>
+    <div class="col-2">
+      mon
+      <br>
+      🌞
+      <br>
+      68℉/
+      <br>
+      54℃
+    </div>
+    <br>
+    <div class="col-2">
+      tues
+      <br>
+      ⛅
+      <br>
+      67℉/
+      <br>
+      52℃
+    </div>
+    <br>
+    <div class="col-2">
+      wed
+      <br>
+      ⛅
+      <br>
+      67℉/
+      <br>
+      53℃
+    </div>
+    <br>
+    <div class="col-2">
+      thurs
+          <br>
+          🌧
+          <br>
+          61℉/
+          <br>
+          52℃
+        </div>
+      </p>  
+    </div>
+  </div>
+  </div>    
+</body>
+<script src="script/alerts.js"></script>
+</html>
