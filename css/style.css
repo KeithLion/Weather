@@ -1,0 +1,50 @@
+body {
+  background-color: beige;
+}
+h1 {
+  text-align: center;
+}
+h2 {
+  text-align: center;
+  border-radius: 30px;
+}
+p {
+  text-align: center;
+}
+li {
+  text-align: center;
+  list-style: none;
+}
+.temp-panel {
+  border-radius: 10px;
+  background-color: aqua;
+  margin: 0px;
+}
+input {
+  display: block;
+  margin: 0 auto;
+}
+button {
+  display: block;
+  margin: 0 auto;
+}
+.search-bar {
+  display: block;
+  margin: 0 auto;
+}
+.container {
+  border-radius: 100px;
+  padding: 100px;
+  margin: 0 auto;
+  width: 100%;
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
