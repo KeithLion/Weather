@@ -3,9 +3,19 @@ function cityInput(bar) {
   let input = document.querySelector("#city-input");
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${input.value}`;
+  let apiKey = "0c9f5772c0f4bd1cd99a1c942c3d0c32";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric`;
+  axios.get(`${apiUrl}&appid=${apiKey}`).then(getWeather);
 }
 let form = document.querySelector("form");
 form.addEventListener("submit", cityInput);
+
+function getWeather(output) {
+  let currentTemp = Math.round(output.data.main.temp);
+  let temperature = document.querySelector(".temp");
+  temperature.innerHTML = `${currentTemp}`;
+}
+
 
 let current = new Date();
 let minute = current.getMinutes();
@@ -43,16 +53,3 @@ let month = months[current.getMonth()];
 let today = document.querySelector("#currentDay");
 let currentdate = `${week}, ${month} ${date}`;
 today.innerHTML = `${currentdate}`;
-
-function temperture(event) {
-  if (event.target === Farh) {
-    temp.innerHTML = "70";
-  } else {
-    temp.innerHTML = `50`;
-  }
-}
-let temp = document.querySelector(".temp");
-let celcius = document.querySelector(".degreec");
-let Farh = document.querySelector(".degreef");
-Farh.addEventListener("click", temperture);
-celcius.addEventListener("click", temperture);
