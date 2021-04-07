@@ -32,19 +32,22 @@ button {
   display: block;
   margin: 0 auto;
 }
-.container {
-  border-radius: 100px;
-  padding: 100px;
-  margin: 0 auto;
-  width: 100%;
-  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
-  text-align: center;
-}
+
 a {
   text-decoration: none;
 }
 a:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.weather-app {
+  border-radius: 80px;
+  padding: 100px;
+  margin: 0 auto;
+  width: 600px;
+  height: 500px;
+  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+  text-align: center;
 }
