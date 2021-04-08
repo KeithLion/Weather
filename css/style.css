@@ -49,3 +49,6 @@ a:hover {
 .temp {
   font-size: 34px;
 }
+.descrip {
+  text-transform: capitalize;
+}

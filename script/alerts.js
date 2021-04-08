@@ -1,5 +1,23 @@
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    `Monday`,
+    `Tuesday`,
+    `Wednesday`,
+    `Thursday`,
+    `Friday`,
+    `Saturday`,
+    `Sunday`
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
+}
+
 function cityInput(bar) {
   bar.preventDefault();
+  console.log(bar.data);
   let input = document.querySelector("#city-input");
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${input.value}`;
@@ -21,41 +39,6 @@ function getWeather(output) {
   humid.innerHTML = output.data.main.humidity;
   let windSpeed = document.querySelector(".wind");
   windSpeed.innerHTML = Math.round(output.data.wind.speed);
+  let dateElement = document.querySelector("#date");
+  dateElement.innerHTML = formatDate(output.data.dt * 1000);
 }
-
-let current = new Date();
-let minute = current.getMinutes();
-let hour = current.getHours();
-let time = document.querySelector("#time");
-time.innerHTML = `${hour}:${minute}`;
-
-let date = current.getDate();
-let days = [
-  `Sunday`,
-  `Monday`,
-  `Tuesday`,
-  `Wednesday`,
-  `Thursday`,
-  `Friday`,
-  `Saturday`
-];
-let week = days[current.getDay()];
-let months = [
-  `Jan`,
-  `Feb`,
-  `Mar`,
-  `Apr`,
-  `May`,
-  `Jun`,
-  `Jul`,
-  `Aug`,
-  `Sep`,
-  `Oct`,
-  `Nov`,
-  `Dec`
-];
-let month = months[current.getMonth()];
-
-let today = document.querySelector("#currentDay");
-let currentdate = `${week}, ${month} ${date}`;
-today.innerHTML = `${currentdate}`;
