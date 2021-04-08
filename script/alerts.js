@@ -25,8 +25,6 @@ function cityInput(bar) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getWeather);
 }
-let form = document.querySelector("form");
-form.addEventListener("submit", cityInput);
 
 function getWeather(output) {
   console.log(output.data);
@@ -41,11 +39,13 @@ function getWeather(output) {
   windSpeed.innerHTML = Math.round(output.data.wind.speed);
   let dateElement = document.querySelector("#date");
   dateElement.innerHTML = formatDate(output.data.dt * 1000);
-    let iconElement = document.querySelector("#icon");
+  let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `http://openweathermap.org/img/wn/${output.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", output.data.weather[0].description);
 }
-}
+
+let form = document.querySelector("form");
+form.addEventListener("submit", cityInput);
