@@ -30,7 +30,7 @@ function getWeather(output) {
   console.log(output.data);
   let currentTemp = Math.round(output.data.main.temp);
   let temperature = document.querySelector(".temp");
-  temperature.innerHTML = `${currentTemp}°`;
+  temperature.innerHTML = `${currentTemp}`;
   let decsription = document.querySelector(".descrip");
   decsription.innerHTML = output.data.weather[0].description;
   let humid = document.querySelector(".humidity");
@@ -45,7 +45,29 @@ function getWeather(output) {
     `http://openweathermap.org/img/wn/${output.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", output.data.weather[0].description);
+  celciusTemp = output.data.main.temp;
 }
+
+function showFarhrenheit(event) {
+  event.preventDefault();
+  let farhrenheitTemp = (celciusTemp * 9) / 5 + 32;
+  let temperature = document.querySelector(".temp");
+  temperature.innerHTML = Math.round(farhrenheitTemp);
+}
+
+let celciusTemp = null;
+
+function showCelcuis(event) {
+  event.preventDefault();
+  let temperature = document.querySelector(".temp");
+  temperature.innerHTML = Math.round(celciusTemp);
+}
+
+let farh = document.querySelector("#degree");
+farh.addEventListener("click", showFarhrenheit);
+
+let celciuslink = document.querySelector("#degreeC");
+celciuslink.addEventListener("click", showCelcuis);
 
 let form = document.querySelector("form");
 form.addEventListener("submit", cityInput);
