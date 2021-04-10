@@ -30,7 +30,7 @@ function cityInput(bar) {
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${input.value}`;
   let apiKey = "0c9f5772c0f4bd1cd99a1c942c3d0c32";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getWeather);
 }
 
@@ -70,7 +70,7 @@ function displayForecast(responce) {
 
 function getForecast(coordinates) {
   let apiKey = "0c9f5772c0f4bd1cd99a1c942c3d0c32";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 function getWeather(output) {
