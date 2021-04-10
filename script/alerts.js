@@ -26,6 +26,35 @@ function cityInput(bar) {
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getWeather);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#Forecast");
+  let forecastHTML = `<div class="row">`;
+  let day = [`Sun`, `Mon`, `Tues`, `Wed`, `Thurs`];
+  day.forEach(function (days) {
+    forecastHTML =
+      forecastHTML +
+      ` 
+  
+  <div class="col-2">
+  <div class="forecast-day">
+  ${days}
+  </div>
+    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""
+    width="30px"
+    >
+    <br>
+    <span class="forecast-farh">
+    72℉
+    </span>
+    <span class="forecast-celcius">
+    55℃
+    </span>
+    </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function getWeather(output) {
   console.log(output.data);
   let currentTemp = Math.round(output.data.main.temp);
@@ -62,6 +91,8 @@ function showCelcuis(event) {
   let temperature = document.querySelector(".temp");
   temperature.innerHTML = Math.round(celciusTemp);
 }
+
+displayForecast();
 
 let farh = document.querySelector("#degree");
 farh.addEventListener("click", showFarhrenheit);
