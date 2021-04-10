@@ -3,13 +3,13 @@ function formatDate(timestamp) {
   let minutes = date.getMinutes();
   let hours = date.getHours();
   let days = [
+    `Sunday`,
     `Monday`,
     `Tuesday`,
     `Wednesday`,
     `Thursday`,
     `Friday`,
-    `Saturday`,
-    `Sunday`
+    `Saturday`
   ];
   let day = days[date.getDay()];
   return `${day} ${hours}:${minutes}`;
@@ -81,7 +81,7 @@ function getWeather(output) {
   let decsription = document.querySelector(".descrip");
   decsription.innerHTML = output.data.weather[0].description;
   let humid = document.querySelector(".humidity");
-  humid.innerHTML = output.data.main.humidity;
+  humid.innerHTML = `Humidity  ${output.data.main.humidity}`;
   let windSpeed = document.querySelector(".wind");
   windSpeed.innerHTML = Math.round(output.data.wind.speed);
   let dateElement = document.querySelector("#date");
