@@ -15,6 +15,14 @@ function formatDate(timestamp) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function formatDay(daysCycle) {
+  let date = new Date(daysCycle * 1000);
+  let day = date.getDay();
+  let days = [`Sun`, `Mon`, `Tues`, `Wed`, `Thurs`, `Fri`, `Sat`];
+
+  return days[day];
+}
+
 function cityInput(bar) {
   bar.preventDefault();
   console.log(bar.data);
@@ -22,39 +30,49 @@ function cityInput(bar) {
   let h3 = document.querySelector("h3");
   h3.innerHTML = `${input.value}`;
   let apiKey = "0c9f5772c0f4bd1cd99a1c942c3d0c32";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&units=imperial`;
   axios.get(`${apiUrl}&appid=${apiKey}`).then(getWeather);
 }
 
-function displayForecast() {
+function displayForecast(responce) {
+  let forecast = responce.data.daily;
   let forecastElement = document.querySelector("#Forecast");
   let forecastHTML = `<div class="row">`;
-  let day = [`Sun`, `Mon`, `Tues`, `Wed`, `Thurs`];
-  day.forEach(function (days) {
-    forecastHTML =
-      forecastHTML +
-      ` 
-  
-  <div class="col-2">
-  <div class="forecast-day">
-  ${days}
-  </div>
-    <img src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png" alt=""
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        ` 
+      
+      <div class="col-2">
+      <div class="forecast-day">
+      ${formatDay(forecastDay.dt)}
+      </div>
+      <img src="http://openweathermap.org/img/wn/${
+        forecastDay.weather[0].icon
+      }@2x.png" alt=""
     width="30px"
     >
     <br>
     <span class="forecast-farh">
-    72℉
+    ${Math.round(forecastDay.temp.max)}°
     </span>
     <span class="forecast-celcius">
-    55℃
+    ${Math.round(forecastDay.temp.min)}°
     </span>
     </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
+function getForecast(coordinates) {
+  let apiKey = "0c9f5772c0f4bd1cd99a1c942c3d0c32";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=imperial`;
+  axios.get(apiUrl).then(displayForecast);
+}
 function getWeather(output) {
   console.log(output.data);
   let currentTemp = Math.round(output.data.main.temp);
@@ -75,6 +93,8 @@ function getWeather(output) {
   );
   iconElement.setAttribute("alt", output.data.weather[0].description);
   celciusTemp = output.data.main.temp;
+
+  getForecast(output.data.coord);
 }
 
 function showFarhrenheit(event) {
@@ -91,8 +111,6 @@ function showCelcuis(event) {
   let temperature = document.querySelector(".temp");
   temperature.innerHTML = Math.round(celciusTemp);
 }
-
-displayForecast();
 
 let farh = document.querySelector("#degree");
 farh.addEventListener("click", showFarhrenheit);
